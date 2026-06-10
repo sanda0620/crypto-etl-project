@@ -5,21 +5,24 @@ An automated end-to-end data engineering project that ingests live cryptocurrenc
 ---
 
 ## Architecture
+
+```
 CoinGecko API
-↓
+      ↓
 Python Extract (requests)
-↓
+      ↓
 Raw JSON Storage (data/raw/)
-↓
+      ↓
 PostgreSQL Staging Layer
-↓
+      ↓
 Data Cleaning & Validation
-↓
+      ↓
 PostgreSQL Warehouse (Star Schema)
-↓
+      ↓
 Automated Scheduler (cron)
-↓
+      ↓
 Power BI Dashboard
+```
 
 ---
 
@@ -91,6 +94,8 @@ Notebook: `notebooks/data_quality.ipynb`
 ---
 
 ## Project Structure
+
+```
 crypto-etl-project/
 │
 ├── data/raw/              ← Raw API responses (JSON)
@@ -98,7 +103,7 @@ crypto-etl-project/
 ├── scripts/
 │   ├── extract.py         ← API extraction
 │   ├── load_staging.py    ← Staging layer load
-│   ← transform.py        ← Warehouse transformation
+│   ├── transform.py       ← Warehouse transformation
 │   ├── export.py          ← CSV export
 │   └── etl_runner.py      ← Pipeline orchestrator
 ├── sql/
@@ -110,6 +115,7 @@ crypto-etl-project/
 ├── dashboards/
 ├── README.md
 └── requirements.txt
+```
 
 ---
 
@@ -127,7 +133,6 @@ pip install -r requirements.txt
 
 # Set up environment variables
 cp .env.example .env
-# Edit .env with your PostgreSQL credentials
 
 # Set up database
 psql -d crypto_db -f sql/staging_schema.sql
@@ -142,7 +147,10 @@ python scripts/etl_runner.py
 ## Automation
 
 Pipeline runs every hour via cron:
+
+```
 0 * * * * cd /path/to/project && python scripts/etl_runner.py >> logs/etl.log 2>&1
+```
 
 ---
 
