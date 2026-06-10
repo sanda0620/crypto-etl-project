@@ -154,6 +154,10 @@ Pipeline runs every hour via cron:
 
 ---
 
+## Power BI Dashboard
+
+![Dashboard](dashboards/screenshots/dashboard_screenshot.png)
+
 ## Key Skills Demonstrated
 
 - ETL pipeline design and implementation
